@@ -1,0 +1,144 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Green Pulse · Sustainable Purchasing Survey</title><meta name="description" content="A sustainable purchasing survey for students in grades 7–12."><style>
+  :root {
+    --green: #39765b;
+    --ink: #254537;
+    --cream: #fbfaf4;
+    --muted: #6e8678;
+    --card-line: #e4ebe2;
+    --field-line: #cddbd0;
+    --field-bg: #fcfdfa;
+    --track: #e7eee7;
+    --hero-bg: #e8f2e7;
+    --teal: #437f76;
+    --font: ui-rounded, "Trebuchet MS", Arial, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--font); padding: 0 16px; }
+  .page { max-width: 1100px; margin: 0 auto; }
+  html { scroll-behavior: smooth; }
+  header { position: sticky; top: 0; z-index: 20; background: var(--cream); padding: 14px 0; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+  nav { display: flex; gap: 6px; }
+  nav a { color: var(--ink); text-decoration: none; font-weight: 800; font-size: 15px; padding: 9px 16px; border-radius: 999px; }
+  nav a:hover { background: #e8f0e7; }
+  nav a.active { background: var(--green); color: #fff; }
+  nav a:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
+  #progress, #ranks, #participate { scroll-margin-top: 90px; }
+  @media (max-width: 750px) { nav { order: 3; width: 100%; justify-content: space-between; } nav a { flex: 1; text-align: center; padding: 9px 8px; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  .logo { font-size: 23px; font-weight: 900; letter-spacing: -1px; }
+  .logo span { color: #71a680; }
+  .small { color: var(--muted); font-size: 13px; }
+  button { border: 0; background: var(--green); color: #fff; padding: 12px 18px; border-radius: 15px; cursor: pointer; font: inherit; font-weight: 700; }
+  button.secondary { background: #e8f0e7; color: var(--green); }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+  button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
+  main { padding-bottom: 70px; }
+
+  .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; align-items: center; background: var(--hero-bg); border-radius: 34px; padding: 36px 42px; min-height: 340px; }
+  .hero > * { min-width: 0; }
+  h1 { font-size: clamp(34px, 5vw, 60px); letter-spacing: -2px; margin: 12px 0; line-height: 1.02; }
+  h2 { font-size: 23px; letter-spacing: -.5px; margin: 0 0 12px; }
+  .eyebrow { font-weight: 800; letter-spacing: 2px; font-size: 12px; color: #668e73; }
+  .hero p { font-size: 17px; line-height: 1.6; max-width: 450px; }
+  .pill { display: inline-block; padding: 7px 12px; background: #d7e9d9; border-radius: 20px; font-size: 12px; font-weight: 800; }
+
+  .bottle-scene { position: relative; display: grid; place-items: center; min-height: 280px; }
+  .spark { position: absolute; font-size: 30px; animation: bob 3s ease-in-out infinite; }
+  .s1 { top: 22px; left: 12%; }
+  .s2 { top: 60px; right: 8%; animation-delay: .8s; }
+  .s3 { bottom: 25px; right: 14%; animation-delay: 1.3s; }
+  @keyframes bob { 50% { transform: translateY(-12px) rotate(9deg); } }
+  .bottle { width: 120px; height: 222px; border: 7px solid var(--teal); border-radius: 28px 28px 33px 33px; position: relative; overflow: hidden; background: #ffffffb8; transform: rotate(-7deg); box-shadow: 12px 14px 0 #b9d8bf; }
+  .bottle:before { content: ""; position: absolute; top: -12px; left: 29px; width: 48px; height: 16px; background: var(--teal); border-radius: 8px; z-index: 2; }
+  .water { position: absolute; bottom: 0; left: 0; width: 100%; height: 0; background: linear-gradient(#a4dbe1, #65b8c5); transition: height 1.6s cubic-bezier(.2, .8, .2, 1); }
+  .water:before { content: ""; position: absolute; top: -9px; left: -10%; width: 120%; height: 20px; border-radius: 50%; background: #a4dbe1; animation: sway 3s ease-in-out infinite; }
+  @keyframes sway { 50% { transform: translateX(8px) scaleY(1.25); } }
+  .bubble { position: absolute; bottom: 8px; width: 9px; height: 9px; border-radius: 50%; background: #ffffffaa; animation: rise 3.4s ease-in infinite; }
+  .b1 { left: 24%; } .b2 { left: 56%; animation-delay: -1.2s; } .b3 { left: 74%; animation-delay: -2.3s; width: 6px; height: 6px; }
+  @keyframes rise { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(-120px); opacity: 0; } }
+  .face { position: absolute; top: 95px; left: 0; width: 100%; font-size: 28px; text-align: center; color: #315c54; z-index: 1; }
+
+  .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 22px; }
+  .layout > * { min-width: 0; }
+  .card { background: #fff; border: 1px solid var(--card-line); border-radius: 26px; padding: 26px; box-shadow: 0 5px 18px #305d4510; }
+  .wide { grid-column: 1 / -1; }
+  .count { font-size: 48px; font-weight: 900; letter-spacing: -2px; font-variant-numeric: tabular-nums; }
+  .track { height: 16px; border-radius: 20px; background: var(--track); overflow: hidden; margin: 14px 0; }
+  .fill { height: 100%; width: 0; background: linear-gradient(90deg, #92c8a0, #3b8662); border-radius: 20px; transition: width 1.2s; }
+  .stats { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .muted { color: #73867a; }
+  .class-row { margin: 17px 0; }
+  .class-head { display: flex; justify-content: space-between; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .class-row .track { height: 11px; margin: 7px 0; }
+  .leader { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid #edf0e9; min-width: 0; }
+  .leader:last-child { border: 0; }
+  .rank { font-size: 22px; width: 38px; flex: none; }
+  .leader .name { font-weight: 800; flex: 1; min-width: 0; overflow-wrap: anywhere; }
+  .leader .score { font-weight: 900; font-variant-numeric: tabular-nums; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-grid > * { min-width: 0; }
+  label { font-size: 13px; font-weight: 800; display: block; margin: 12px 0 6px; }
+  input, select { width: 100%; padding: 12px 13px; border: 1px solid var(--field-line); border-radius: 12px; background: var(--field-bg); font: inherit; color: var(--ink); }
+  .notice { padding: 12px; border-radius: 12px; background: #eff6ed; font-size: 14px; margin: 14px 0; }
+  .error { background: #ffe9e7; color: #923d3b; }
+  .admin-panel { margin-top: 20px; border: 2px dashed #b5d2bd; border-radius: 25px; padding: 22px; background: #f6faf3; }
+  .admin-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px; border-bottom: 1px solid #dfe9de; flex-wrap: wrap; }
+  .actions { display: flex; gap: 8px; }
+  .actions button { padding: 9px 12px; }
+  .hide { display: none !important; }
+  footer { text-align: center; color: #6f8374; padding: 24px; }
+
+  @media (max-width: 750px) {
+    .hero, .layout, .form-grid { grid-template-columns: 1fr; }
+    .hero { padding: 28px; }
+    .bottle-scene { min-height: 250px; }
+    .card { padding: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .spark, .water:before, .bubble { animation: none; }
+    .water, .fill { transition: none; }
+  }
+
+.logo{text-decoration:none;color:var(--ink)}p{line-height:1.7}.hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.button{display:inline-block;text-decoration:none;background:var(--green);color:white;padding:13px 19px;border-radius:15px;font-weight:800}.button.secondary{background:#e8f0e7;color:var(--green)}.bottle-caption{position:absolute;bottom:0;font-size:13px;font-weight:700;color:var(--muted)}.survey{margin-top:22px;padding:32px;scroll-margin-top:90px}.survey-heading{display:flex;justify-content:space-between;align-items:center;gap:20px}.survey-heading h2{margin-top:8px}.steps{display:flex;gap:12px;margin:28px 0;color:var(--muted);font-size:14px;flex-wrap:wrap}.steps span{padding:10px 15px;border-radius:12px;background:var(--cream)}.steps .current{color:var(--green);background:#e8f2e7;font-weight:800}fieldset{border:0;padding:0;margin:30px 0}legend{font-size:17px;font-weight:800;margin-bottom:12px;line-height:1.6}.required{color:var(--green)}.options{display:grid;grid-template-columns:1fr 1fr;gap:10px}.option{display:flex;gap:10px;align-items:center;border:1px solid var(--field-line);border-radius:13px;padding:15px;margin:0;font-size:14px;font-weight:500;cursor:pointer;background:var(--field-bg);line-height:1.45}.option:hover{border-color:var(--green)}.option.selected{background:#e8f2e7;border-color:var(--green)}input[type=radio],input[type=checkbox]{width:18px;height:18px;flex:none;accent-color:var(--green);margin:0}.grades{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.grades .option{justify-content:center;flex-wrap:wrap;font-weight:800}.consent{display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.7;font-weight:500;padding:18px;background:var(--cream);border-radius:12px}.consent input{margin-top:3px}textarea{width:100%;font:inherit;padding:15px;border:1px solid var(--field-line);border-radius:12px;background:var(--field-bg);color:var(--ink);resize:vertical}.text-label{font-size:16px;margin-bottom:12px}textarea:focus-visible,.button:focus-visible{outline:3px solid var(--green);outline-offset:3px}.form-footer{display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--card-line);padding-top:24px;margin-top:28px}.success{text-align:center;padding:35px 15px}.success p{max-width:540px;margin:0 auto 26px}.success-leaf{font-size:50px;margin-bottom:20px}.end-note{text-align:center;padding:28px;font-size:14px;color:var(--muted)}#about{scroll-margin-top:90px}@media(max-width:750px){.options{grid-template-columns:1fr}.grades{grid-template-columns:repeat(3,1fr)}.form-footer{align-items:stretch;flex-direction:column}.actions{justify-content:flex-end}.survey{padding:22px}.survey-heading{align-items:flex-start}.header-note{display:none}header>.small{display:none}} 
+</style></head><body><div class="page"><header><a href="#" class="logo">🌿 Green <span>Pulse</span></a><nav aria-label="Sections"><a href="#about">About</a><a class="active" href="#survey">Student survey</a></nav></header><main><section class="hero" id="about"><div><h1>Sustainable<br>purchasing survey.</h1><p>Sustainable purchasing means thinking about how the things we buy affect people and the planet. It can mean choosing products that last longer, use less packaging, can be reused or repaired, or are made under fair working conditions. Tell us what shapes your choices.</p><div class="hero-actions"><a class="button" href="#survey">Take the survey ↗</a></div></div><div class="bottle-scene" role="img" id="bottleScene" aria-label="An empty, sad bottle"><span class="spark s1">✦</span><span class="spark s2">🍃</span><span class="spark s3">✧</span><div class="bottle"><div class="water" id="water" style="height:0;visibility:hidden"><span class="bubble b1"></span><span class="bubble b2"></span><span class="bubble b3"></span></div><div class="face" id="face">•︵•</div></div></div></section><section class="card survey" id="survey"><div class="survey-heading"><span class="pill" id="stepLabel">Step 1 of 3</span></div><div class="track" role="progressbar" aria-label="Questions answered" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress"><div class="fill" id="fill"></div></div><div class="stats small"><span id="answerCount">0 of 11 required questions answered</span><span id="percent">0%</span></div><div id="content"></div><div id="message" role="status" class="notice hide"></div></section></main><footer>Student-led Sustainable Initiative · Green Pulse</footer></div><script>
+// Add your Supabase project URL and publishable (anon) key here. Never use a service-role key.
+const SUPABASE_URL = "https://gyloxsmzygedlkxsljkp.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_Qv9_W5z3ChAy2gmTwQn1Nw_lvoQzes9";
+const questions = [["grade","What grade are you in?",["7","8","9","10","11","12"]],["familiar","How familiar are you with sustainable purchasing?",["Not familiar","A little familiar","Somewhat familiar","Very familiar","Not sure"]],["frequency","When choosing a product, how often do you consider its environmental impact?",["Never","Rarely","Sometimes","Often","Always","I do not choose products"]],["category","Which products do you most often choose or help buy?",["Food and drinks","Clothing","School supplies","Electronics","Personal care","I do not usually choose products"]],["priority","What matters most when choosing a product?",["Price","Quality and durability","Brand or style","Environmental impact","Convenience","Other / not sure"]],["packaging","How often do you choose less packaging or recyclable packaging?",["Never","Rarely","Sometimes","Often","Always","Not sure"]],["reuse","In the past month, how often did you reuse, repair, borrow, or buy second-hand instead of buying new?",["Never","Once","2–3 times","4 or more times","Not sure"]],["price","How much extra would you pay for a more sustainable version of a similar product?",["No extra","Up to 5% more","Up to 10% more","More than 10% extra","It depends on the product","Not sure / I do not decide"]],["barrier","What is your biggest difficulty with choosing sustainable products?",["They cost too much","They are hard to find","I cannot tell which products are sustainable","I have limited choice in what is bought","I prefer other products","I do not face a difficulty"]],["help","What would most help you choose sustainable products?",["Lower prices","Clearer environmental labels","More available options","Information about how products are made","Encouragement from friends or family","Social media influencers","Nothing / not sure"]],["school","Which school action would you find most useful?",["Refill stations","Second-hand uniform or book exchange","Less packaging in the canteen","Sustainable shopping workshops","Clear recycling and product information","Other / not sure"]]];
+
+let step=0,completed=0,answers={},consent=false,busy=false;
+const $=id=>document.getElementById(id);
+function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;}
+function update(){const count=questions.filter(q=>answers[q[0]]).length,pct=Math.round(count/11*100);$('fill').style.width=pct+'%';$('progress').setAttribute('aria-valuenow',pct);$('answerCount').textContent=count+' of 11 required questions answered';$('percent').textContent=pct+'%';const water=completed/3*100;$('water').style.height=water+'%';$('water').style.visibility=water?'visible':'hidden';$('face').textContent=['•︵•','•_•','•ᴗ•','^ᴗ^'][completed];$('bottleScene').setAttribute('aria-label','Bottle '+Math.round(water)+'% full; '+(completed===0?'sad':completed===3?'happy':'becoming happier')+'.');}
+function message(text){$('message').textContent=text;$('message').classList.remove('hide');}
+function render(){
+ $('content').replaceChildren();$('stepLabel').textContent='Step '+(step+1)+' of 3';
+ const form=el('form');const from=step===0?0:step===1?1:6,to=step===0?1:step===1?6:11;
+ questions.slice(from,to).forEach(([key,title,opts])=>{
+ const field=el('fieldset'),legend=el('legend',null,title+' *'),group=el('div',key==='grade'?'grades':'options');field.append(legend,group);
+ opts.forEach(option=>{const label=el('label','option'+(answers[key]===option?' selected':''));const radio=el('input');radio.type='radio';radio.name=key;radio.value=option;radio.required=true;radio.checked=answers[key]===option;
+ radio.addEventListener('change',()=>{answers[key]=option;group.querySelectorAll('label').forEach(l=>l.classList.remove('selected'));label.classList.add('selected');update();});label.append(radio,document.createTextNode(key==='grade'?'Grade '+option:option));group.append(label);});form.append(field);
+ });
+ if(step===0){const label=el('label','consent');const check=el('input');check.type='checkbox';check.required=true;check.checked=consent;check.addEventListener('change',()=>consent=check.checked);label.append(check,document.createTextNode('I understand this survey is voluntary and agree to share my answers for this student sustainability project.'));form.append(label);}
+ if(step===2){const label=el('label','text-label','How could you implement sustainable purchasing today? (optional)');label.htmlFor='comment';const text=el('textarea');text.id='comment';text.rows=4;text.maxLength=600;text.placeholder='Share an idea. Please don’t include names or personal details.';text.value=answers.comment||'';text.addEventListener('input',()=>answers.comment=text.value);form.append(label,text);}
+ const footer=el('div','form-footer'),note=el('span','small','* Required · Answer based on your own experience'),actions=el('div','actions');footer.append(note,actions);
+ if(step>0){const back=el('button','secondary','← Back');back.type='button';back.addEventListener('click',()=>{step--;render();$('survey').scrollIntoView({behavior:'smooth'});});actions.append(back);}
+ const send=el('button',null,step===2?'Submit my response ↗':'Continue →');send.type='submit';actions.append(send);form.append(footer);$('content').append(form);
+ form.addEventListener('submit',async e=>{
+ e.preventDefault();if(busy)return;
+ if(step<2){completed=Math.max(completed,step+1);step++;render();$('survey').scrollIntoView({behavior:'smooth'});return;}
+ if(!SUPABASE_URL||!SUPABASE_ANON_KEY){message('Response collection has not been connected yet. Your answers have not been saved. Please tell the survey organiser.');return;}
+ busy=true;send.disabled=true;send.textContent='Saving…';$('message').classList.add('hide');
+ try{
+ const clean=Object.fromEntries(questions.map(q=>[q[0],answers[q[0]]]));clean.comment=answers.comment||'';
+ const response=await fetch(SUPABASE_URL.replace(/\/$/,'')+'/rest/v1/survey_responses',{method:'POST',headers:{apikey:SUPABASE_ANON_KEY,'Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify({grade:Number(answers.grade),answers:clean})});
+ if(!response.ok)throw Error('Unable to save');
+ completed=3;update();$('stepLabel').textContent='Complete ✓';$('answerCount').textContent='Response saved';const box=el('div','success');box.append(el('div','success-leaf','🌿'),el('h2',null,'Thank you for adding your voice!'),el('p',null,'Your response has been saved. Your perspective will help us understand student purchasing habits and opportunities for change.'));$('content').replaceChildren(box);$('survey').scrollIntoView({behavior:'smooth'});
+ }catch{message('We could not save your response. Please check your connection and try again.');send.disabled=false;send.textContent='Submit my response ↗';}finally{busy=false;}
+ });update();
+}
+render();
+
+</script></body></html>
